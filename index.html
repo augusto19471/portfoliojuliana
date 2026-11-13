@@ -347,6 +347,12 @@ body::after{opacity:.19!important}
 .worked-with-viewport:hover .worked-with-track{animation-play-state:paused}
 @media(max-width:760px){.worked-with-strip{grid-template-columns:1fr;gap:12px;padding:18px 20px}.worked-with-track img{width:1971px;height:69px}.worked-with-track{animation-duration:43s}.worked-with-strip{min-height:112px}}
 @media(prefers-reduced-motion:reduce){.worked-with-track{animation:none}}
+
+/* V20 — light neutral grey paper with reduced grain */
+:root{--site-light-gray:#F0F0EE;--palette-ivory:var(--site-light-gray);--cream:var(--site-light-gray)}
+html,body,.header.header-new,.hero.hero-reference.hero-v8,.about,.projects,.why,.worked-with-strip{background-color:var(--site-light-gray)!important}
+.header.header-new,.worked-with-strip{background:var(--site-light-gray)!important}
+body::after{opacity:.085!important;mix-blend-mode:multiply!important}
 </style></head>
 <body>
 
