@@ -605,6 +605,126 @@ main > section#about{z-index:30!important}
 @media (prefers-reduced-motion:no-preference) and (pointer:fine){
  html{scroll-behavior:auto!important}
 }
+
+/* V31 — Selected Cases: 2 columns x 6 rows with editorial typography and interactive media */
+main > section#projects.case-collection{
+ position:relative!important;top:auto!important;
+ min-height:0!important;height:auto!important;
+ display:block!important;
+ background:#F0F0EE!important;
+ box-shadow:none!important;
+ padding:clamp(85px,10vw,145px) clamp(24px,5vw,90px) clamp(95px,11vw,170px)!important;
+ isolation:isolate;
+ z-index:40!important;
+}
+.case-collection-heading{
+ display:flex;align-items:end;justify-content:space-between;
+ gap:30px;margin:0 auto clamp(38px,4.6vw,70px);
+ max-width:1580px;
+}
+.case-eyebrow{
+ display:block;font-family:var(--font-body,'Outfit',sans-serif);
+ font-size:11px;font-weight:600;letter-spacing:.13em;color:#656643;
+ margin-bottom:16px;
+}
+.case-collection-heading h2{
+ font-family:var(--font-title,'Bricolage Grotesque',sans-serif);
+ font-weight:700;font-size:clamp(48px,6.8vw,106px);
+ letter-spacing:-.07em;line-height:.98;color:#261D12;
+}
+.case-collection-heading h2 em{
+ font-family:var(--font-italic,'Instrument Serif',serif);
+ font-weight:400;color:#31401A;
+}
+.case-collection-heading>p{
+ max-width:380px;color:#77746F;line-height:1.45;
+ font-family:var(--font-body,'Outfit',sans-serif);
+ font-size:clamp(14px,1.15vw,17px);font-weight:300;
+}
+.case-collection-grid{
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ gap:clamp(50px,5vw,80px) clamp(19px,3vw,48px)!important;
+ align-items:start;max-width:1580px;margin:0 auto;
+}
+.case-card{min-width:0;position:relative;display:flex;flex-direction:column;gap:17px}
+.case-card-media{
+ display:block!important;position:relative;width:100%;aspect-ratio:1.48/1;
+ appearance:none;border:0;padding:0;overflow:hidden;
+ background:#dddcd8;border-radius:clamp(18px,2vw,34px)!important;
+ isolation:isolate;cursor:pointer;
+ transition:border-radius .45s ease;
+}
+.case-card-media img{
+ position:absolute;inset:0;display:block;width:100%;height:100%;
+ object-fit:cover;object-position:center;
+ transform:scale(1);transition:transform .55s cubic-bezier(.22,1,.36,1),filter .45s ease;
+}
+.case-card-shade{
+ position:absolute;inset:0;z-index:1;background:rgba(0,0,0,0);
+ transition:background .4s ease;
+}
+.case-card-open{
+ position:absolute;z-index:2;bottom:22px;left:22px;
+ display:inline-flex;align-items:center;gap:15px;
+ font-family:var(--font-body,'Outfit',sans-serif);
+ font-size:12px;font-weight:600;letter-spacing:.03em;
+ background:#F0F0EE;color:#261D12;
+ padding:11px 12px 11px 18px;border-radius:99px;
+ opacity:0;transform:translateY(12px) scale(.96);
+ transition:opacity .35s ease,transform .45s cubic-bezier(.22,1,.36,1);
+ pointer-events:none;
+}
+.case-card-arrow{
+ width:28px;height:28px;display:grid;place-items:center;border-radius:50%;
+ background:#31401A;color:#fff;font-size:17px;
+}
+.case-card-media:hover img,.case-card-media:focus-visible img{transform:scale(.94);filter:brightness(.85)}
+.case-card-media:hover .case-card-shade,.case-card-media:focus-visible .case-card-shade{background:rgba(0,0,0,.11)}
+.case-card-media:hover .case-card-open,.case-card-media:focus-visible .case-card-open{opacity:1;transform:translateY(0) scale(1)}
+.case-card-media:focus-visible{outline:3px solid #31401A;outline-offset:4px}
+.case-card-details h3{
+ font-family:var(--font-title,'Bricolage Grotesque',sans-serif);
+ font-weight:600;color:#261D12;letter-spacing:-.042em;
+ font-size:clamp(22px,2.1vw,34px);line-height:1.14;
+}
+.case-card-details p{
+ margin-top:8px;color:#656643;font-family:var(--font-body,'Outfit',sans-serif);
+ font-size:clamp(14px,1.15vw,17px);line-height:1.5;font-weight:300;
+}
+.case-card-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.case-card-tags span{
+ display:inline-flex;align-items:center;padding:7px 11px;
+ border:1px solid rgba(49,64,26,.23);border-radius:99px;
+ font-family:var(--font-body,'Outfit',sans-serif);
+ font-size:11px;line-height:1.2;letter-spacing:.005em;
+ color:#31401A;background:transparent;
+}
+.case-detail-dialog{
+ position:fixed;inset:0;margin:auto;max-width:min(960px,calc(100vw - 36px));
+ width:100%;max-height:min(90vh,900px);padding:0;
+ border:0;border-radius:26px;background:#F0F0EE;overflow-y:auto;color:#261D12;
+ box-shadow:0 24px 80px rgba(0,0,0,.22);
+}
+.case-detail-dialog::backdrop{background:rgba(20,22,19,.72);backdrop-filter:blur(7px)}
+.case-detail-image{aspect-ratio:1.7/1;background:#e5e4e1}
+.case-detail-image img{width:100%;height:100%;display:block;object-fit:cover}
+.case-detail-copy{padding:clamp(22px,4vw,48px)}
+.case-detail-copy h2{font-family:var(--font-title,'Bricolage Grotesque',sans-serif);font-size:clamp(32px,4vw,54px);letter-spacing:-.045em}
+.case-detail-copy p{margin-top:12px;font-family:var(--font-body,'Outfit',sans-serif);color:#656643;line-height:1.55;font-size:16px}
+.case-detail-copy .case-detail-note{font-size:13px;opacity:.85;margin-top:24px}
+.case-detail-close{position:sticky;top:16px;float:right;margin:16px 16px -56px 0;z-index:5;border:0;background:#F0F0EE;color:#261D12;border-radius:100px;width:42px;height:42px;font-size:30px;display:grid;place-items:center;cursor:pointer}
+@media(max-width:700px){
+ .case-collection-heading{display:block}
+ .case-collection-heading>p{margin-top:18px}
+ .case-collection-grid{grid-template-columns:1fr!important;gap:42px!important}
+ .case-card-media{aspect-ratio:1.45/1;border-radius:19px!important}
+ .case-card-details h3{font-size:25px}
+ .case-card-open{opacity:1;transform:none;bottom:13px;left:13px;padding:7px 8px 7px 13px;font-size:11px}
+ .case-card-arrow{width:25px;height:25px}
+}
+@media(prefers-reduced-motion:reduce){
+ .case-card-media img,.case-card-shade,.case-card-open{transition:none!important}
+}
 </style></head>
 <body>
 
@@ -651,7 +771,169 @@ main > section#about{z-index:30!important}
 
 </div><!-- /.portfolio-showcase-panel -->
 <section id="about" class="about section-pad"><div class="eyebrow">[WHO WE ARE]</div><div class="about-layout"><div class="about-image"><img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=850&q=85" alt="Fashion portrait"></div><div class="about-copy"><div class="eyebrow">[01 / Our Commitment]</div><h2>Consistent<br>quality in every<br>project, blending<br>innovative Design</h2><p>We create digital experiences where strategy, thoughtful design and technology work closely. Every interaction is considered, every detail refined, and every outcome meaningful.</p><div class="stats"><div><strong data-count="190">0</strong><span>Global<br>Partners</span></div><div><strong data-count="92">0</strong><span>Client<br>Retention</span></div><div><strong data-count="32" data-suffix="%">0</strong><span>Industries<br>We Serve</span></div></div></div></div><div class="partners"><span>✳ WAVE</span><span>◌ studio</span><span>✧ NORTH</span><span>LOCO</span><span>◈ FOUND</span><span>◎ CAST</span></div></section>
-<section id="projects" class="projects section-pad"><div class="projects-heading"><div><div class="eyebrow">[02 / PROJECTS]</div><h2>Latest<br>Works</h2></div><p>We craft digital products that speak for themselves — unique, bold, and custom-focused. Projects built for ambitious brands.</p><a class="pill" href="#all-projects">VIEW ALL WORKS ↗</a></div><div class="project-grid" id="all-projects"><a class="project-card tall" href="#contact"><div class="project-img"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1000&q=90" alt="Portrait project"></div><div class="project-meta"><span>Urban Glow</span><span>2025</span></div></a><a class="project-card" href="#contact"><div class="project-img"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=1000&q=90" alt="Creative portrait"></div><div class="project-meta"><span>Lumina Health</span><span>2025</span></div></a><a class="project-card" href="#contact"><div class="project-img"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=1000&q=90" alt="Fashion editorial"></div><div class="project-meta"><span>Verno</span><span>2025</span></div></a><a class="project-card" href="#contact"><div class="project-img"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1000&q=90" alt="Editorial portrait"></div><div class="project-meta"><span>Lumero</span><span>2024</span></div></a></div></section>
+<section id="projects" class="projects case-collection" aria-labelledby="cases-heading">
+  <header class="case-collection-heading">
+    <div><span class="case-eyebrow">[02 / SELECTED WORK]</span><h2 id="cases-heading">Selected <em>Cases</em></h2></div>
+    <p>A selection of creative, branding, and digital projects.<br>Explore the ideas behind the work.</p>
+  </header>
+  <div class="case-collection-grid" id="all-projects">
+<article class="case-card" data-case-index="0">
+  <button type="button" class="case-card-media" aria-label="View case: Ajuda Médica" data-open-case="0">
+    <img src="assets/cases/ajuda.webp" alt="Ajuda Médica — portfolio work" loading="lazy" decoding="async" />
+    <span class="case-card-shade" aria-hidden="true"></span>
+    <span class="case-card-open" aria-hidden="true"><span>VIEW CASE</span><span class="case-card-arrow">↗</span></span>
+  </button>
+  <div class="case-card-details">
+    <h3>Ajuda Médica</h3>
+    <p>Campanha e presença digital para serviços de saúde.</p>
+    <div class="case-card-tags"><span>Art Direction</span><span>Social Media</span><span>Campaign</span></div>
+  </div>
+</article>
+<article class="case-card" data-case-index="1">
+  <button type="button" class="case-card-media" aria-label="View case: Chocoá Chocolates" data-open-case="1">
+    <img src="assets/cases/chocoa.webp" alt="Chocoá Chocolates — portfolio work" loading="lazy" decoding="async" />
+    <span class="case-card-shade" aria-hidden="true"></span>
+    <span class="case-card-open" aria-hidden="true"><span>VIEW CASE</span><span class="case-card-arrow">↗</span></span>
+  </button>
+  <div class="case-card-details">
+    <h3>Chocoá Chocolates</h3>
+    <p>Conteúdo e identidade visual para uma experiência de marca.</p>
+    <div class="case-card-tags"><span>Branding</span><span>Social Media</span><span>Creative</span></div>
+  </div>
+</article>
+<article class="case-card" data-case-index="2">
+  <button type="button" class="case-card-media" aria-label="View case: Projeto Hospitalar" data-open-case="2">
+    <img src="assets/cases/hospital.webp" alt="Projeto Hospitalar — portfolio work" loading="lazy" decoding="async" />
+    <span class="case-card-shade" aria-hidden="true"></span>
+    <span class="case-card-open" aria-hidden="true"><span>VIEW CASE</span><span class="case-card-arrow">↗</span></span>
+  </button>
+  <div class="case-card-details">
+    <h3>Projeto Hospitalar</h3>
+    <p>Uma experiência digital mais clara para comunicação em saúde.</p>
+    <div class="case-card-tags"><span>Web Design</span><span>UI Design</span><span>Strategy</span></div>
+  </div>
+</article>
+<article class="case-card" data-case-index="3">
+  <button type="button" class="case-card-media" aria-label="View case: Hunter" data-open-case="3">
+    <img src="assets/cases/hunter.webp" alt="Hunter — portfolio work" loading="lazy" decoding="async" />
+    <span class="case-card-shade" aria-hidden="true"></span>
+    <span class="case-card-open" aria-hidden="true"><span>VIEW CASE</span><span class="case-card-arrow">↗</span></span>
+  </button>
+  <div class="case-card-details">
+    <h3>Hunter</h3>
+    <p>Comunicação e presença digital orientadas ao negócio.</p>
+    <div class="case-card-tags"><span>Creative Strategy</span><span>Web Design</span><span>Marketing</span></div>
+  </div>
+</article>
+<article class="case-card" data-case-index="4">
+  <button type="button" class="case-card-media" aria-label="View case: Inspirar" data-open-case="4">
+    <img src="assets/cases/inspirar.webp" alt="Inspirar — portfolio work" loading="lazy" decoding="async" />
+    <span class="case-card-shade" aria-hidden="true"></span>
+    <span class="case-card-open" aria-hidden="true"><span>VIEW CASE</span><span class="case-card-arrow">↗</span></span>
+  </button>
+  <div class="case-card-details">
+    <h3>Inspirar</h3>
+    <p>Desenvolvimento de identidade visual e aplicações de marca.</p>
+    <div class="case-card-tags"><span>Brand Identity</span><span>Art Direction</span><span>Design</span></div>
+  </div>
+</article>
+<article class="case-card" data-case-index="5">
+  <button type="button" class="case-card-media" aria-label="View case: Joma Construtora" data-open-case="5">
+    <img src="assets/cases/joma.webp" alt="Joma Construtora — portfolio work" loading="lazy" decoding="async" />
+    <span class="case-card-shade" aria-hidden="true"></span>
+    <span class="case-card-open" aria-hidden="true"><span>VIEW CASE</span><span class="case-card-arrow">↗</span></span>
+  </button>
+  <div class="case-card-details">
+    <h3>Joma Construtora</h3>
+    <p>Experiência digital para valorizar uma marca do setor imobiliário.</p>
+    <div class="case-card-tags"><span>Web Design</span><span>UI Design</span><span>Branding</span></div>
+  </div>
+</article>
+<article class="case-card" data-case-index="6">
+  <button type="button" class="case-card-media" aria-label="View case: Lovebreads — Catálogo" data-open-case="6">
+    <img src="assets/cases/lovebreads-cat.webp" alt="Lovebreads — Catálogo — portfolio work" loading="lazy" decoding="async" />
+    <span class="case-card-shade" aria-hidden="true"></span>
+    <span class="case-card-open" aria-hidden="true"><span>VIEW CASE</span><span class="case-card-arrow">↗</span></span>
+  </button>
+  <div class="case-card-details">
+    <h3>Lovebreads — Catálogo</h3>
+    <p>Materiais gráficos e comunicação para produtos alimentícios.</p>
+    <div class="case-card-tags"><span>Editorial</span><span>Graphic Design</span><span>Branding</span></div>
+  </div>
+</article>
+<article class="case-card" data-case-index="7">
+  <button type="button" class="case-card-media" aria-label="View case: Lovebreads — Social" data-open-case="7">
+    <img src="assets/cases/lovebreads-sm.webp" alt="Lovebreads — Social — portfolio work" loading="lazy" decoding="async" />
+    <span class="case-card-shade" aria-hidden="true"></span>
+    <span class="case-card-open" aria-hidden="true"><span>VIEW CASE</span><span class="case-card-arrow">↗</span></span>
+  </button>
+  <div class="case-card-details">
+    <h3>Lovebreads — Social</h3>
+    <p>Sistema visual de comunicação para redes sociais.</p>
+    <div class="case-card-tags"><span>Social Media</span><span>Content</span><span>Design</span></div>
+  </div>
+</article>
+<article class="case-card" data-case-index="8">
+  <button type="button" class="case-card-media" aria-label="View case: Daniela Quiroga" data-open-case="8">
+    <img src="assets/cases/quiroga.webp" alt="Daniela Quiroga — portfolio work" loading="lazy" decoding="async" />
+    <span class="case-card-shade" aria-hidden="true"></span>
+    <span class="case-card-open" aria-hidden="true"><span>VIEW CASE</span><span class="case-card-arrow">↗</span></span>
+  </button>
+  <div class="case-card-details">
+    <h3>Daniela Quiroga</h3>
+    <p>Design digital para serviços pediátricos e de saúde.</p>
+    <div class="case-card-tags"><span>Web Design</span><span>UI Design</span><span>Creative</span></div>
+  </div>
+</article>
+<article class="case-card" data-case-index="9">
+  <button type="button" class="case-card-media" aria-label="View case: Projeto Esportivo" data-open-case="9">
+    <img src="assets/cases/capa.webp" alt="Projeto Esportivo — portfolio work" loading="lazy" decoding="async" />
+    <span class="case-card-shade" aria-hidden="true"></span>
+    <span class="case-card-open" aria-hidden="true"><span>VIEW CASE</span><span class="case-card-arrow">↗</span></span>
+  </button>
+  <div class="case-card-details">
+    <h3>Projeto Esportivo</h3>
+    <p>Identidade e comunicação digital para o universo esportivo.</p>
+    <div class="case-card-tags"><span>Sports Marketing</span><span>Digital</span><span>Strategy</span></div>
+  </div>
+</article>
+<article class="case-card" data-case-index="10">
+  <button type="button" class="case-card-media" aria-label="View case: Projeto Criativo" data-open-case="10">
+    <img src="assets/cases/06.webp" alt="Projeto Criativo — portfolio work" loading="lazy" decoding="async" />
+    <span class="case-card-shade" aria-hidden="true"></span>
+    <span class="case-card-open" aria-hidden="true"><span>VIEW CASE</span><span class="case-card-arrow">↗</span></span>
+  </button>
+  <div class="case-card-details">
+    <h3>Projeto Criativo</h3>
+    <p>Soluções visuais para fortalecer comunicação e resultados.</p>
+    <div class="case-card-tags"><span>Creative</span><span>Branding</span><span>Campaign</span></div>
+  </div>
+</article>
+<article class="case-card" data-case-index="11">
+  <button type="button" class="case-card-media" aria-label="View case: Projeto de Identidade" data-open-case="11">
+    <img src="assets/cases/01.webp" alt="Projeto de Identidade — portfolio work" loading="lazy" decoding="async" />
+    <span class="case-card-shade" aria-hidden="true"></span>
+    <span class="case-card-open" aria-hidden="true"><span>VIEW CASE</span><span class="case-card-arrow">↗</span></span>
+  </button>
+  <div class="case-card-details">
+    <h3>Projeto de Identidade</h3>
+    <p>Construção de linguagem visual e aplicações de marca.</p>
+    <div class="case-card-tags"><span>Visual Identity</span><span>Design</span><span>Art Direction</span></div>
+  </div>
+</article>
+  </div>
+  <dialog class="case-detail-dialog" id="case-detail-dialog" aria-labelledby="case-detail-title">
+    <button type="button" class="case-detail-close" aria-label="Close case" data-close-case>×</button>
+    <div class="case-detail-image"><img src="" alt="" id="case-detail-image"></div>
+    <div class="case-detail-copy">
+      <span class="case-eyebrow">SELECTED CASE STUDY</span>
+      <h2 id="case-detail-title"></h2>
+      <p id="case-detail-description"></p>
+      <div class="case-card-tags" id="case-detail-tags"></div>
+      <p class="case-detail-note">Full case study coming soon. This preview introduces the project and its creative direction.</p>
+    </div>
+  </dialog>
+</section>
 <section id="creative" class="why section-pad"><div class="eyebrow">[03 / Why Choose Brog]</div><div class="why-heading"><h2>Why Brog?</h2><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&q=80" alt="Creative studio"></div><div class="why-grid"><article><div class="why-icon">✳</div><h3>Strategy &<br>Research</h3><p>We listen before we create.</p></article><article><div class="why-icon">◎</div><h3>Design &<br>Purpose</h3><p>Built around clear intentions.</p></article><article><div class="why-icon">▣</div><h3>Built, Test &<br>Optimize</h3><p>Real-world work, real results.</p></article><article><div class="why-icon">↗</div><h3>Launch &<br>Support</h3><p>By your side as you grow.</p></article></div></section>
 <section id="growth" class="services section-pad"><div class="eyebrow">[04 / Our Services]</div><h2>Services</h2><div class="service-list"><div class="service-row"><span>01</span><div><h3>Art Direction</h3><p>Creative direction that creates a distinct point of view and an unforgettable brand experience.</p></div><div class="tags"><span>Visual identity</span><span>Campaigns</span><span>Concepts</span></div><div class="service-preview"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?w=400&q=80" alt="Landscape"></div></div><div class="service-row"><span>02</span><div><h3>Brand Identity</h3><p>Design systems that build stronger identities and recognizable, lasting brands.</p></div><div class="tags"><span>Branding</span><span>Strategy</span><span>Creative systems</span><span>Typography</span></div><div class="service-preview"><img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=400&q=80" alt="Interior"></div></div><div class="service-row"><span>03</span><div><h3>Motion Design</h3><p>Motion, interaction and dynamic details that move brands beyond the static screen.</p></div><div class="tags"><span>Animations</span><span>Visual effects</span><span>Web motion</span></div><div class="service-preview"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&q=80" alt="Fashion"></div></div><div class="service-row"><span>04</span><div><h3>Frame Shots</h3><p>Photography, visual storytelling and image-making for unforgettable campaigns.</p></div><div class="tags"><span>Photography</span><span>Production</span><span>Art direction</span></div><div class="service-preview"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80" alt="Portrait"></div></div></div></section>
 <section id="contact" class="contact section-pad"><div class="contact-top"><span>Run ↗</span><span>Details ↗</span><span>Instagram ↗</span><span>LinkedIn ↗</span><span>↗</span></div><div class="contact-columns"><form id="contact-form"><div class="eyebrow">[CONTACT]</div><h2>Have a project in mind?</h2><label>Name<input required type="text" placeholder="Your name"></label><label>Email<input required type="email" placeholder="Your Email"></label><label>Message<textarea required rows="2" placeholder="Your message"></textarea></label><button class="send" type="submit">Send Message ↗</button><p id="form-status" class="form-status" aria-live="polite"></p></form><div class="contact-details"><div>Let's Talk<br>hello@brogstudio.com<br>+00 000 000 0000</div><div>Explore<br><a href="#home">Home ↗</a><br><a href="#projects">Projects ↗</a><br><a href="#services">Services ↗</a></div><div>Follow<br>Instagram ↗<br>LinkedIn ↗</div></div></div><div class="marquee"><div class="marquee-track">BROG® STUDIO / Design / Development / BROG® STUDIO / Design / Development /&nbsp;</div></div><footer><span>Created by BROG® Studio</span><span>© 2026 BROG®. All rights reserved.</span></footer></section>
@@ -719,5 +1001,32 @@ requestAnimationFrame(frame);
  // Explicit navigation cancels easing immediately, letting anchor links land normally.
  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>{running=false;target=window.scrollY;}));
  window.addEventListener('pagehide',()=>{running=false;});
+})();
+
+// V31 — lightweight, accessible case study preview. Replace descriptions with final studies later.
+(()=>{
+ const items=[{"slug":"ajuda","title":"Ajuda Médica","desc":"Campanha e presença digital para serviços de saúde.","tags":["Art Direction","Social Media","Campaign"]},{"slug":"chocoa","title":"Chocoá Chocolates","desc":"Conteúdo e identidade visual para uma experiência de marca.","tags":["Branding","Social Media","Creative"]},{"slug":"hospital","title":"Projeto Hospitalar","desc":"Uma experiência digital mais clara para comunicação em saúde.","tags":["Web Design","UI Design","Strategy"]},{"slug":"hunter","title":"Hunter","desc":"Comunicação e presença digital orientadas ao negócio.","tags":["Creative Strategy","Web Design","Marketing"]},{"slug":"inspirar","title":"Inspirar","desc":"Desenvolvimento de identidade visual e aplicações de marca.","tags":["Brand Identity","Art Direction","Design"]},{"slug":"joma","title":"Joma Construtora","desc":"Experiência digital para valorizar uma marca do setor imobiliário.","tags":["Web Design","UI Design","Branding"]},{"slug":"lovebreads-cat","title":"Lovebreads — Catálogo","desc":"Materiais gráficos e comunicação para produtos alimentícios.","tags":["Editorial","Graphic Design","Branding"]},{"slug":"lovebreads-sm","title":"Lovebreads — Social","desc":"Sistema visual de comunicação para redes sociais.","tags":["Social Media","Content","Design"]},{"slug":"quiroga","title":"Daniela Quiroga","desc":"Design digital para serviços pediátricos e de saúde.","tags":["Web Design","UI Design","Creative"]},{"slug":"capa","title":"Projeto Esportivo","desc":"Identidade e comunicação digital para o universo esportivo.","tags":["Sports Marketing","Digital","Strategy"]},{"slug":"06","title":"Projeto Criativo","desc":"Soluções visuais para fortalecer comunicação e resultados.","tags":["Creative","Branding","Campaign"]},{"slug":"01","title":"Projeto de Identidade","desc":"Construção de linguagem visual e aplicações de marca.","tags":["Visual Identity","Design","Art Direction"]}];
+ const dialog=document.getElementById('case-detail-dialog');
+ if(!dialog)return;
+ const picture=document.getElementById('case-detail-image');
+ const title=document.getElementById('case-detail-title');
+ const desc=document.getElementById('case-detail-description');
+ const tags=document.getElementById('case-detail-tags');
+ const closer=dialog.querySelector('[data-close-case]');
+ function close(){if(dialog.open)dialog.close();}
+ document.querySelectorAll('[data-open-case]').forEach(button=>button.addEventListener('click',()=>{
+  const item=items[Number(button.dataset.openCase)];
+  if(!item)return;
+  picture.src='assets/cases/'+item.slug+'.webp';
+  picture.alt=item.title+' — enlarged project presentation';
+  title.textContent=item.title;
+  desc.textContent=item.desc;
+  tags.replaceChildren();
+  item.tags.forEach(tag=>{const el=document.createElement('span');el.textContent=tag;tags.appendChild(el);});
+  if(typeof dialog.showModal==='function')dialog.showModal();
+ }));
+ closer?.addEventListener('click',close);
+ dialog.addEventListener('click',e=>{if(e.target===dialog)close();});
+ dialog.addEventListener('close',()=>{picture.removeAttribute('src');});
 })();
 </script></body></html>
