@@ -725,6 +725,72 @@ main > section#projects.case-collection{
 @media(prefers-reduced-motion:reduce){
  .case-card-media img,.case-card-shade,.case-card-open{transition:none!important}
 }
+
+/* V32 — compact 3-column case grid; plain labels; seamless inset hover */
+main > section#projects.case-collection{
+ padding:clamp(70px,7vw,115px) clamp(24px,4.6vw,78px) clamp(95px,11vw,165px)!important;
+}
+.case-collection-heading{
+ display:block!important;
+ max-width:1580px!important;
+ margin:0 auto clamp(24px,2.8vw,40px)!important;
+}
+.case-collection-heading h2{
+ font-family:var(--font-title,'Bricolage Grotesque',sans-serif)!important;
+ font-size:clamp(26px,2.9vw,43px)!important;
+ line-height:1.13!important;
+ letter-spacing:-.045em!important;
+ font-style:normal!important;
+ font-weight:700!important;
+ color:#261D12!important;
+}
+.case-collection-grid{
+ grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ column-gap:clamp(14px,2vw,30px)!important;
+ row-gap:clamp(35px,4vw,60px)!important;
+}
+.case-card{gap:13px!important}
+.case-card-media{
+ aspect-ratio:1.39 / 1!important;
+ border-radius:clamp(17px,2vw,29px)!important;
+ background:#F0F0EE!important;
+ border:none!important;
+ box-shadow:none!important;
+ overflow:hidden!important;
+}
+.case-card-media img{
+ transform:scale(1.075)!important;
+ transform-origin:center center!important;
+ filter:brightness(1)!important;
+ transition:transform .55s cubic-bezier(.22,1,.36,1),filter .45s ease!important;
+}
+.case-card-media:hover img,.case-card-media:focus-visible img{
+ transform:scale(1.005)!important;
+ filter:brightness(.88)!important;
+}
+.case-card-media:hover .case-card-shade,.case-card-media:focus-visible .case-card-shade{
+ background:rgba(0,0,0,.08)!important;
+}
+.case-card-details h3{font-size:clamp(19px,1.7vw,27px)!important}
+.case-card-details p{font-size:clamp(13px,1vw,15px)!important;line-height:1.45!important}
+.case-card-tags{gap:5px 12px!important;margin-top:12px!important}
+.case-card-tags span{
+ padding:0!important;
+ border:0!important;
+ border-radius:0!important;
+ background:transparent!important;
+ color:#656643!important;
+ font-size:clamp(11px,.87vw,13px)!important;
+ font-weight:400!important;
+}
+@media (max-width:950px){
+ .case-collection-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media (max-width:600px){
+ .case-collection-grid{grid-template-columns:1fr!important;row-gap:39px!important}
+ .case-card-media{aspect-ratio:1.42/1!important;border-radius:20px!important}
+ .case-collection-heading h2{font-size:30px!important}
+}
 </style></head>
 <body>
 
@@ -773,8 +839,7 @@ main > section#projects.case-collection{
 <section id="about" class="about section-pad"><div class="eyebrow">[WHO WE ARE]</div><div class="about-layout"><div class="about-image"><img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=850&q=85" alt="Fashion portrait"></div><div class="about-copy"><div class="eyebrow">[01 / Our Commitment]</div><h2>Consistent<br>quality in every<br>project, blending<br>innovative Design</h2><p>We create digital experiences where strategy, thoughtful design and technology work closely. Every interaction is considered, every detail refined, and every outcome meaningful.</p><div class="stats"><div><strong data-count="190">0</strong><span>Global<br>Partners</span></div><div><strong data-count="92">0</strong><span>Client<br>Retention</span></div><div><strong data-count="32" data-suffix="%">0</strong><span>Industries<br>We Serve</span></div></div></div></div><div class="partners"><span>✳ WAVE</span><span>◌ studio</span><span>✧ NORTH</span><span>LOCO</span><span>◈ FOUND</span><span>◎ CAST</span></div></section>
 <section id="projects" class="projects case-collection" aria-labelledby="cases-heading">
   <header class="case-collection-heading">
-    <div><span class="case-eyebrow">[02 / SELECTED WORK]</span><h2 id="cases-heading">Selected <em>Cases</em></h2></div>
-    <p>A selection of creative, branding, and digital projects.<br>Explore the ideas behind the work.</p>
+    <h2 id="cases-heading">Selected Cases</h2>
   </header>
   <div class="case-collection-grid" id="all-projects">
 <article class="case-card" data-case-index="0">
