@@ -490,13 +490,13 @@ main > .portfolio-showcase-panel{
  isolation:isolate;
 }
 main > section#home{z-index:10!important;min-height:calc(100svh - 94px)!important}
-main > .portfolio-showcase-panel{z-index:20!important;background:#F0F0EE!important;min-height:100svh;padding-bottom:24px;box-shadow:0 -9px 25px rgba(38,29,18,.08)}
+main > .portfolio-showcase-panel{z-index:20!important;background:#F0F0EE!important;min-height:100svh;padding-bottom:24px;box-shadow:none!important}
 main > section#about{z-index:30!important;background:#F0F0EE!important}
 main > section#projects{z-index:40!important;background:#F0F0EE!important}
 main > section#creative{z-index:50!important;background:#F0F0EE!important}
 main > section#growth{z-index:60!important;background:#090a0e!important}
 main > section#contact{z-index:70!important;background:#090a0e!important}
-main > section:not(#home){box-shadow:0 -9px 25px rgba(38,29,18,.08)}
+main > section:not(#home){box-shadow:none!important}
 /* Keep inner image/card overflow containment without clipping the sticky ancestor. */
 .portfolio-showcase-panel .portfolio-feature-banners{overflow:visible}
 .portfolio-showcase-panel .worked-with-strip{position:relative;z-index:1}
@@ -505,7 +505,7 @@ main > section[id]{scroll-margin-top:0}
  main > section,main > .portfolio-showcase-panel{top:0!important}
  main > section#home{min-height:calc(100svh - 83px)!important}
  main > .portfolio-showcase-panel{min-height:100svh;padding-bottom:20px}
- main > section:not(#home),main > .portfolio-showcase-panel{box-shadow:0 -5px 15px rgba(38,29,18,.06)}
+ main > section:not(#home),main > .portfolio-showcase-panel{box-shadow:none!important}
 }
 @media(prefers-reduced-motion:reduce){
  html{scroll-behavior:auto!important}
@@ -549,6 +549,26 @@ main > section[id]{scroll-margin-top:0}
  .worked-with-track img{width:1760px!important;height:54px!important}
 }
 @media(prefers-reduced-motion:reduce){.worked-with-track{animation:none!important}}
+
+/* V28 — clean scroll stacking and 70px preview of the second fold */
+main > section,
+main > .portfolio-showcase-panel,
+main > section::before,
+main > section::after,
+main > .portfolio-showcase-panel::before,
+main > .portfolio-showcase-panel::after{
+ box-shadow:none!important;
+ filter:none!important;
+}
+main > .portfolio-showcase-panel{
+ margin-top:-70px!important;
+ box-shadow:none!important;
+}
+main > section#home{box-shadow:none!important}
+@media(max-width:760px){
+ main > .portfolio-showcase-panel{margin-top:-70px!important}
+ main > section,main > .portfolio-showcase-panel{box-shadow:none!important}
+}
 </style></head>
 <body>
 
