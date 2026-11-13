@@ -1151,9 +1151,9 @@ requestAnimationFrame(frame);
        if(!text||!text.trim())continue;
        const frag=document.createDocumentFragment();
        // Preserve natural breaks between words; prevent breaks inside words.
-       const segments=text.match(/\\s+|\\S+/g)||[];
+       const segments=text.match(/\s+|\S+/g)||[];
        for(const segment of segments){
-         if(/^\\s+$/.test(segment)){frag.appendChild(document.createTextNode(segment));continue;}
+         if(/^\s+$/.test(segment)){frag.appendChild(document.createTextNode(segment));continue;}
          const word=document.createElement('span');word.className='hover-word';
          for(const char of Array.from(segment)){
            const glyph=document.createElement('span');glyph.className='hover-letter';
