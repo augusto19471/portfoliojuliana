@@ -600,6 +600,11 @@ main > section#about{z-index:30!important}
   margin-top:-70px!important;
  }
 }
+
+/* V30 — slow cinematic section lift while retaining the clean stacking */
+@media (prefers-reduced-motion:no-preference) and (pointer:fine){
+ html{scroll-behavior:auto!important}
+}
 </style></head>
 <body>
 
@@ -668,5 +673,51 @@ window.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;targ
 document.addEventListener('pointerleave',()=>{dot.style.opacity='0';active=false;});
 function frame(){currentX+=(targetX-currentX)*.16;currentY+=(targetY-currentY)*.16;dot.style.transform='translate3d('+(currentX-14)+'px,'+(currentY-14)+'px,0)';requestAnimationFrame(frame);}
 requestAnimationFrame(frame);
+})();
+
+// V30 — eased scrolling for a slower, more gradual rise of each overlapping fold.
+// Only desktop wheel input is adjusted. Touch, keyboard, anchor links and reduced-motion
+// preferences remain native. The actual section layers and brand marquee are untouched.
+(()=>{
+ const media=window.matchMedia('(pointer:fine) and (prefers-reduced-motion:no-preference)');
+ if(!media.matches)return;
+ let current=window.scrollY,target=current,running=false,lastSet=current;
+ const clamp=(v)=>Math.max(0,Math.min(v,Math.max(0,document.documentElement.scrollHeight-window.innerHeight)));
+ const internalScroller=(el,dy)=>{
+  for(let n=el;n&&n!==document.body;n=n.parentElement){
+   if(!(n instanceof HTMLElement))continue;
+   const st=getComputedStyle(n);
+   if(!/(auto|scroll)/.test(st.overflowY)||n.scrollHeight<=n.clientHeight+2)continue;
+   if((dy>0&&n.scrollTop<n.scrollHeight-n.clientHeight-2)||(dy<0&&n.scrollTop>2))return true;
+  }
+  return false;
+ };
+ function animate(){
+  if(!running)return;
+  const outside=Math.abs(window.scrollY-lastSet)>5;
+  if(outside){current=window.scrollY;target=current;running=false;return;}
+  current+=(target-current)*.085;
+  if(Math.abs(target-current)<.45){current=target;running=false;}
+  lastSet=current;
+  window.scrollTo(0,current);
+  if(running)requestAnimationFrame(animate);
+ }
+ window.addEventListener('wheel',e=>{
+  if(!media.matches||e.ctrlKey||e.metaKey||e.shiftKey||e.defaultPrevented||Math.abs(e.deltaX)>Math.abs(e.deltaY))return;
+  const el=e.target;
+  if(el instanceof Element&&el.closest('select,textarea,input,[contenteditable="true"]'))return;
+  const factor=e.deltaMode===1?18:e.deltaMode===2?window.innerHeight:1;
+  const dy=e.deltaY*factor;
+  if(!dy||internalScroller(el,dy))return;
+  // A smaller step and more easing make the upwards cover motion noticeably slower.
+  const next=clamp((running?target:window.scrollY)+dy*.72);
+  if(next===window.scrollY&&!running)return;
+  e.preventDefault();
+  target=next;
+  if(!running){current=window.scrollY;lastSet=current;running=true;requestAnimationFrame(animate);}
+ },{passive:false});
+ // Explicit navigation cancels easing immediately, letting anchor links land normally.
+ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>{running=false;target=window.scrollY;}));
+ window.addEventListener('pagehide',()=>{running=false;});
 })();
 </script></body></html>
