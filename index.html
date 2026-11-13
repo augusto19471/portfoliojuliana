@@ -392,43 +392,45 @@ body::after{opacity:.085!important;mix-blend-mode:multiply!important}
 @media(max-width:760px){.worked-with-track img{width:2289px;height:70px}.worked-with-track{animation-duration:41s}}
 @media(prefers-reduced-motion:reduce){.worked-with-track{animation:none!important}}
 
-/* V23 — personal photograph blended into the right side; left aligned hero */
-.hero.hero-reference.hero-v8{position:relative!important;isolation:isolate;overflow:hidden!important;min-height:0!important;background:#F0F0EE!important}
-.hero-v8 .hero-v8-inner{position:relative!important;z-index:3!important;width:min(100%,1440px)!important;min-height:clamp(620px,76vh,780px)!important;height:auto!important;box-sizing:border-box!important;padding:62px clamp(30px,6.5vw,100px)!important;margin:0 auto!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:center!important}
-.hero-v8-identity{width:auto!important;max-width:100%!important;justify-content:flex-start!important;align-items:center!important;gap:10px!important;position:relative!important;z-index:4!important}
-.hero-v8 .hero-v8-name{font-family:'Caveat',cursive!important;text-align:left!important;font-size:clamp(43px,5vw,70px)!important}
-.hero-v8 .reference-avatar{width:clamp(74px,8vw,106px)!important;height:clamp(74px,8vw,106px)!important}
-.hero-v8-copy{margin:22px 0 0!important;text-align:left!important;max-width:min(54vw,695px)!important;position:relative!important;z-index:4!important}
-.hero-v8-copy .hero-fill-title{font-size:clamp(42px,4.65vw,70px)!important;line-height:1.03!important;letter-spacing:-.06em!important;place-items:start!important;text-align:left!important}
-.hero-fill-ghost,.hero-fill-ink{text-align:left!important}
-.hero-fill-ghost br,.hero-fill-ink br{display:initial!important}
-.hero-v8-copy p{font-size:clamp(16px,1.45vw,20px)!important;text-align:left!important;max-width:570px!important;margin:24px 0 0!important}
-.hero-v8 .hero-v8-cta{margin:29px 0 0!important;position:relative!important;z-index:4!important}
-.hero-portrait-photo{position:absolute;z-index:1;top:0;right:-3%;bottom:0;width:58%;display:flex;align-items:end;justify-content:center;overflow:hidden;pointer-events:none;mix-blend-mode:multiply;-webkit-mask-image:radial-gradient(ellipse 76% 78% at 57% 52%,#000 47%,rgba(0,0,0,.95) 58%,transparent 100%);mask-image:radial-gradient(ellipse 76% 78% at 57% 52%,#000 47%,rgba(0,0,0,.95) 58%,transparent 100%)}
-.hero-portrait-photo img{display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:brightness(1.045) saturate(.96)}
-/* Show one run of brands, not two duplicate runs. Move it back and forth for continuous interaction. */
-.worked-with-viewport{--brand-visible-width:calc(100vw - 2 * clamp(30px,7.3vw,132px) - 185px - clamp(24px,4.3vw,84px))}
-.worked-with-track{animation:single-brand-pan 38s linear infinite alternate!important;gap:0!important}
-.worked-with-track img{width:3270px;height:100px}
-@keyframes single-brand-pan{from{transform:translateX(0)}to{transform:translateX(calc(-100% + var(--brand-visible-width)))}}
-@media(max-width:960px){
- .hero-v8 .hero-v8-inner{min-height:590px!important;padding:54px 5%!important}
- .hero-v8-copy{max-width:58%!important}
- .hero-v8-copy .hero-fill-title{font-size:clamp(37px,4.7vw,53px)!important}
- .hero-portrait-photo{width:59%;right:-9%}
+/* V24 — centered hero restored, refreshed case images and compact dark logos */
+.worked-with-strip{
+ width:calc(100% - 2 * clamp(48px,12vw,220px))!important;
+ max-width:1160px!important;
+ min-height:116px!important;
+ margin:0 auto!important;
+ padding:20px 0!important;
+ grid-template-columns:170px minmax(0,1fr)!important;
+ gap:clamp(42px,6vw,104px)!important;
 }
+.worked-with-label{color:#31401A!important;font-size:12px!important}
+.worked-with-viewport{
+ --brand-visible-width:calc(100vw - 2 * clamp(48px,12vw,220px) - 170px - clamp(42px,6vw,104px));
+ overflow:hidden!important;
+}
+.worked-with-track{
+ width:max-content!important;display:flex!important;
+ gap:0!important;align-items:center!important;
+ animation:single-brand-pan-v24 38s linear infinite alternate!important;
+ will-change:transform;
+}
+.worked-with-track img{
+ width:2260px!important;height:80px!important;
+ max-width:none!important;display:block!important;object-fit:contain!important;
+ filter:none!important;
+}
+@keyframes single-brand-pan-v24{
+ from{transform:translateX(0)}
+ to{transform:translateX(calc(-100% + min(var(--brand-visible-width), 1160px)))}
+}
+.worked-with-viewport:hover .worked-with-track{animation-play-state:paused!important}
 @media(max-width:760px){
- .hero-v8 .hero-v8-inner{min-height:850px!important;justify-content:flex-start!important;padding:45px 6% 385px!important}
- .hero-v8-identity{width:100%!important;justify-content:flex-start!important}
- .hero-v8 .hero-v8-name{font-size:clamp(38px,8vw,56px)!important}
- .hero-v8 .reference-avatar{width:76px!important;height:76px!important}
- .hero-v8-copy{max-width:100%!important;margin:18px 0 0!important}
- .hero-v8-copy .hero-fill-title{font-size:clamp(37px,8vw,60px)!important}
- .hero-v8-copy p{max-width:440px!important;margin-top:18px!important}
- .hero-v8 .hero-v8-cta{margin-top:24px!important}
- .hero-portrait-photo{top:auto;bottom:-18px;height:480px;right:-4%;width:100%;-webkit-mask-image:radial-gradient(ellipse 65% 75% at 55% 50%,#000 45%,transparent 100%);mask-image:radial-gradient(ellipse 65% 75% at 55% 50%,#000 45%,transparent 100%)}
- .worked-with-viewport{--brand-visible-width:calc(100vw - 42px)}
- .worked-with-track img{width:2289px;height:70px}
+ .worked-with-strip{
+  width:calc(100% - 48px)!important;max-width:none!important;
+  grid-template-columns:1fr!important;gap:12px!important;
+  min-height:104px!important;padding:18px 0!important;
+ }
+ .worked-with-viewport{--brand-visible-width:calc(100vw - 48px)}
+ .worked-with-track img{width:1760px!important;height:62px!important}
  .worked-with-track{animation-duration:32s!important}
 }
 @media(prefers-reduced-motion:reduce){.worked-with-track{animation:none!important}}
@@ -446,12 +448,11 @@ body::after{opacity:.085!important;mix-blend-mode:multiply!important}
     </div>
     <a class="hero-v8-cta" href="#contact">Let's Talk <span aria-hidden="true">↗</span></a>
   </div>
-  <div class="hero-portrait-photo" aria-hidden="true"><img src="assets/juliana-hero-photo.webp" alt="" fetchpriority="high" decoding="async"></div>
 </section>
 
 <section class="portfolio-feature-banners" aria-label="Explore the portfolio">
   <article class="portfolio-feature feature-strategy">
-    <div class="feature-picture"><img src="assets/strategy-media.webp" alt="Sports campaign featuring a football player" loading="eager" decoding="async"></div>
+    <div class="feature-picture"><img src="assets/strategy-media-v24.webp" alt="Notebook com apresentação de resultados e estratégia esportiva" loading="eager" decoding="async"></div>
     <div class="feature-wash" aria-hidden="true"></div>
     <div class="feature-content">
       <span class="feature-kicker">01 / STRATEGY & PERFORMANCE</span>
@@ -460,7 +461,7 @@ body::after{opacity:.085!important;mix-blend-mode:multiply!important}
     </div>
   </article>
   <article class="portfolio-feature feature-creative">
-    <div class="feature-picture"><img src="assets/creative-design.webp" alt="Colorful branding work for Crepe da Mag" loading="lazy" decoding="async"></div>
+    <div class="feature-picture"><img src="assets/creative-design-v24.webp" alt="Mockup de identidade e conteúdo de redes sociais para Chocolates" loading="lazy" decoding="async"></div>
     <div class="feature-wash" aria-hidden="true"></div>
     <div class="feature-content">
       <span class="feature-kicker">02 / BRANDING & VISUAL DESIGN</span>
@@ -469,10 +470,10 @@ body::after{opacity:.085!important;mix-blend-mode:multiply!important}
     </div>
   </article>
 </section>
-<section class="worked-with-strip" aria-label="Marcas com que trabalhei: Acqua Lokos, Ademicon, Betbra, B, Burnnis, Charrua, Ecobrisa, Imobiliária Lajeado, Instituto Innovare, Joma, Modullos, Redemac Zona Nova, Uni, Vesna, Construtora Zona Nova">
+<section class="worked-with-strip" aria-label="Marcas com que trabalhei: Acqua Lokos, Ademicon, Betbra, Burnnis, Charrua, Ecobrisa, Imobiliária Lajeado, Instituto Innovare, Joma, Modullos, Redemac Zona Nova, Uni, Vesna, Construtora Zona Nova">
  <div class="worked-with-label">/WORKED WITH</div>
  <div class="worked-with-viewport" aria-hidden="true"><div class="worked-with-track">
-  <img src="assets/brands-v22.webp" alt="" width="3270" height="100" decoding="async">
+  <img src="assets/brands-v24.webp" alt="" width="2940" height="104" decoding="async">
  </div></div>
 </section>
 
