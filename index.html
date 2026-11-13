@@ -511,6 +511,44 @@ main > section[id]{scroll-margin-top:0}
  html{scroll-behavior:auto!important}
  main > section:not(#home),main > .portfolio-showcase-panel{box-shadow:none!important}
 }
+
+/* V27 — closer logos, slower pan, corrected Vesna, no separator and tighter centered row */
+.worked-with-strip{
+ box-sizing:border-box!important;
+ width:calc(100% - 2 * clamp(208px, calc(12vw + 160px), 380px))!important;
+ max-width:840px!important;
+ margin:80px auto 0!important;
+ padding:19px 0 24px!important;
+ border-top:0!important;
+ border-bottom:0!important;
+ box-shadow:none!important;
+ background:#F0F0EE!important;
+ grid-template-columns:145px minmax(0,1fr)!important;
+ gap:clamp(28px,3vw,48px)!important;
+}
+.portfolio-showcase-panel .worked-with-strip{border-top:none!important;box-shadow:none!important}
+.worked-with-viewport{
+ --brand-visible-width:calc(100vw - 2 * clamp(208px, calc(12vw + 160px), 380px) - 145px - clamp(28px,3vw,48px))!important;
+}
+.worked-with-track{animation:single-brand-pan-v27 115s linear infinite alternate!important}
+.worked-with-track img{width:2280px!important;height:70px!important;max-width:none!important;object-fit:contain!important;filter:none!important}
+@keyframes single-brand-pan-v27{
+ from{transform:translateX(0)}
+ to{transform:translateX(calc(-100% + max(100px, var(--brand-visible-width))))}
+}
+@media(max-width:760px){
+ .worked-with-strip{
+  width:calc(100% - 64px)!important;
+  max-width:none!important;
+  margin:44px auto 0!important;
+  padding:16px 0 20px!important;
+  grid-template-columns:1fr!important;gap:12px!important;
+ }
+ .worked-with-viewport{--brand-visible-width:calc(100vw - 64px)!important}
+ .worked-with-track{animation-duration:100s!important}
+ .worked-with-track img{width:1760px!important;height:54px!important}
+}
+@media(prefers-reduced-motion:reduce){.worked-with-track{animation:none!important}}
 </style></head>
 <body>
 
@@ -551,7 +589,7 @@ main > section[id]{scroll-margin-top:0}
 <section class="worked-with-strip" aria-label="Marcas com que trabalhei: Acqua Lokos, Ademicon, Betbra, Burnnis, Charrua, Ecobrisa, Imobiliária Lajeado, Instituto Innovare, Joma, Modullos, Redemac Zona Nova, Uni, Vesna, Construtora Zona Nova">
  <div class="worked-with-label">/WORKED WITH</div>
  <div class="worked-with-viewport" aria-hidden="true"><div class="worked-with-track">
-  <img src="assets/brands-v25.webp" alt="" width="3780" height="90" decoding="async">
+  <img src="assets/brands-v27.webp" alt="" width="2940" height="90" decoding="async">
  </div></div>
 </section>
 
