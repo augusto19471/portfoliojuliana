@@ -174,10 +174,50 @@ body{color:var(--palette-deep)!important}
 body::after{background-image:radial-gradient(circle,rgba(101,102,67,.28) 1.1px,transparent 1.35px),url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.11' filter='url(%23n)'/%3E%3C/svg%3E")!important;background-size:24px 24px,160px 160px!important;opacity:.8!important}
 .about .eyebrow,.projects .eyebrow,.why .eyebrow{color:var(--palette-olive)!important}
 .contact .send{background:var(--palette-forest)!important;color:var(--palette-ivory)!important}
+
+/* V13 — clean navigation with divider and fine organic noise only */
+.header.header-new{
+ position:relative;z-index:201;
+ height:94px!important;min-height:94px!important;
+ display:block!important;padding:0 clamp(24px,4.5vw,80px)!important;
+ border-bottom:1px solid rgba(77,58,37,.16)!important;
+ background:var(--palette-ivory)!important;
+}
+.header-layout{height:100%;position:relative;display:flex;align-items:center;justify-content:center}
+.header.header-new .top-nav{display:flex;align-items:center;justify-content:center;gap:clamp(20px,2.7vw,47px);flex-wrap:wrap;font-size:13px!important;font-weight:400!important;letter-spacing:-.01em}
+.header.header-new .top-nav a{font-family:var(--font-body)!important;text-transform:uppercase;color:var(--palette-deep)!important;transition:color .2s ease}
+.header.header-new .top-nav a:hover{color:var(--palette-forest)!important}
+.header-contact-button{
+ position:absolute;right:0;top:50%;transform:translateY(-50%);
+ display:inline-flex;align-items:center;gap:14px;
+ border:1px solid rgba(77,58,37,.23);border-radius:50px;
+ padding:13px 22px;font-family:var(--font-body);font-size:13px;font-weight:500;
+ color:var(--palette-deep);background:transparent;white-space:nowrap;transition:background .25s,color .25s,border-color .25s
+}
+.header-contact-button:hover{background:var(--palette-forest);color:var(--palette-ivory);border-color:var(--palette-forest)}
+/* Remove the previous radial dot-point grid; retain only a soft noise overlay */
+body::after{
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch' seed='8'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23grain)' opacity='.19'/%3E%3C/svg%3E")!important;
+ background-size:180px 180px!important;background-repeat:repeat!important;
+ opacity:.27!important;mix-blend-mode:multiply
+}
+@media(max-width:900px){
+ .header.header-new{height:auto!important;min-height:83px!important;padding:15px 5%!important}
+ .header-layout{gap:16px;justify-content:space-between}
+ .header.header-new .top-nav{gap:12px 19px;justify-content:flex-start;width:auto;font-size:12px!important}
+ .header-contact-button{position:static;transform:none;padding:11px 15px;font-size:12px}
+}
+@media(max-width:560px){
+ .header.header-new{padding:14px 4%!important}
+ .header-layout{align-items:center;gap:12px}
+ .header.header-new .top-nav{gap:9px 13px;font-size:10px!important}
+ .header-contact-button{font-size:10px;padding:10px 12px;gap:5px}
+ .header-contact-button span{display:none}
+}
 </style></head>
 <body>
 
-<header class="header header-new"><nav class="top-nav" aria-label="Main navigation"><a href="#projects">CASES</a><a href="#growth">GROWTH</a><a href="#creative">CREATIVE</a><a href="#about">ABOUT ME</a><a href="#contact">CONTACT</a></nav></header>
+<header class="header header-new"><div class="header-layout"><nav class="top-nav" aria-label="Main navigation"><a href="#projects">CASES</a><a href="#growth">GROWTH</a><a href="#creative">CREATIVE</a><a href="#about">ABOUT ME</a></nav><a class="header-contact-button" href="#contact">LET'S TALK <span aria-hidden="true">↗</span></a></div></header>
 <main>
 <section id="home" class="hero hero-reference hero-v8" aria-label="Juliana Pizarro — portfolio">
   <div class="reference-hero-inner hero-v8-inner">
