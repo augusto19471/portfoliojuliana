@@ -474,6 +474,43 @@ body::after{opacity:.085!important;mix-blend-mode:multiply!important}
  .worked-with-track{animation-duration:35s!important}
 }
 @media(prefers-reduced-motion:reduce){.worked-with-track{animation:none!important}}
+
+/* V26 — natural scroll-stacking panels: each next fold covers the preceding fold.
+   The two case banners and WORKED WITH are one cohesive panel. */
+html{overflow-x:clip!important}
+body{overflow-x:clip!important;overflow-y:visible!important}
+main{display:block!important;overflow:visible!important;isolation:isolate}
+main > section,
+main > .portfolio-showcase-panel{
+ position:-webkit-sticky!important;
+ position:sticky!important;
+ top:0!important;
+ width:100%;
+ min-height:100svh;
+ isolation:isolate;
+}
+main > section#home{z-index:10!important;min-height:calc(100svh - 94px)!important}
+main > .portfolio-showcase-panel{z-index:20!important;background:#F0F0EE!important;min-height:100svh;padding-bottom:24px;box-shadow:0 -9px 25px rgba(38,29,18,.08)}
+main > section#about{z-index:30!important;background:#F0F0EE!important}
+main > section#projects{z-index:40!important;background:#F0F0EE!important}
+main > section#creative{z-index:50!important;background:#F0F0EE!important}
+main > section#growth{z-index:60!important;background:#090a0e!important}
+main > section#contact{z-index:70!important;background:#090a0e!important}
+main > section:not(#home){box-shadow:0 -9px 25px rgba(38,29,18,.08)}
+/* Keep inner image/card overflow containment without clipping the sticky ancestor. */
+.portfolio-showcase-panel .portfolio-feature-banners{overflow:visible}
+.portfolio-showcase-panel .worked-with-strip{position:relative;z-index:1}
+main > section[id]{scroll-margin-top:0}
+@media(max-width:760px){
+ main > section,main > .portfolio-showcase-panel{top:0!important}
+ main > section#home{min-height:calc(100svh - 83px)!important}
+ main > .portfolio-showcase-panel{min-height:100svh;padding-bottom:20px}
+ main > section:not(#home),main > .portfolio-showcase-panel{box-shadow:0 -5px 15px rgba(38,29,18,.06)}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto!important}
+ main > section:not(#home),main > .portfolio-showcase-panel{box-shadow:none!important}
+}
 </style></head>
 <body>
 
@@ -490,6 +527,7 @@ body::after{opacity:.085!important;mix-blend-mode:multiply!important}
   </div>
 </section>
 
+<div class="scroll-overlap-panel portfolio-showcase-panel" aria-label="Portfolio highlights and brands">
 <section class="portfolio-feature-banners" aria-label="Explore the portfolio">
   <article class="portfolio-feature feature-strategy">
     <div class="feature-picture"><img src="assets/strategy-media-v24.webp" alt="Notebook com apresentação de resultados e estratégia esportiva" loading="eager" decoding="async"></div>
@@ -517,6 +555,7 @@ body::after{opacity:.085!important;mix-blend-mode:multiply!important}
  </div></div>
 </section>
 
+</div><!-- /.portfolio-showcase-panel -->
 <section id="about" class="about section-pad"><div class="eyebrow">[WHO WE ARE]</div><div class="about-layout"><div class="about-image"><img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=850&q=85" alt="Fashion portrait"></div><div class="about-copy"><div class="eyebrow">[01 / Our Commitment]</div><h2>Consistent<br>quality in every<br>project, blending<br>innovative Design</h2><p>We create digital experiences where strategy, thoughtful design and technology work closely. Every interaction is considered, every detail refined, and every outcome meaningful.</p><div class="stats"><div><strong data-count="190">0</strong><span>Global<br>Partners</span></div><div><strong data-count="92">0</strong><span>Client<br>Retention</span></div><div><strong data-count="32" data-suffix="%">0</strong><span>Industries<br>We Serve</span></div></div></div></div><div class="partners"><span>✳ WAVE</span><span>◌ studio</span><span>✧ NORTH</span><span>LOCO</span><span>◈ FOUND</span><span>◎ CAST</span></div></section>
 <section id="projects" class="projects section-pad"><div class="projects-heading"><div><div class="eyebrow">[02 / PROJECTS]</div><h2>Latest<br>Works</h2></div><p>We craft digital products that speak for themselves — unique, bold, and custom-focused. Projects built for ambitious brands.</p><a class="pill" href="#all-projects">VIEW ALL WORKS ↗</a></div><div class="project-grid" id="all-projects"><a class="project-card tall" href="#contact"><div class="project-img"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1000&q=90" alt="Portrait project"></div><div class="project-meta"><span>Urban Glow</span><span>2025</span></div></a><a class="project-card" href="#contact"><div class="project-img"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=1000&q=90" alt="Creative portrait"></div><div class="project-meta"><span>Lumina Health</span><span>2025</span></div></a><a class="project-card" href="#contact"><div class="project-img"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=1000&q=90" alt="Fashion editorial"></div><div class="project-meta"><span>Verno</span><span>2025</span></div></a><a class="project-card" href="#contact"><div class="project-img"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1000&q=90" alt="Editorial portrait"></div><div class="project-meta"><span>Lumero</span><span>2024</span></div></a></div></section>
 <section id="creative" class="why section-pad"><div class="eyebrow">[03 / Why Choose Brog]</div><div class="why-heading"><h2>Why Brog?</h2><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&q=80" alt="Creative studio"></div><div class="why-grid"><article><div class="why-icon">✳</div><h3>Strategy &<br>Research</h3><p>We listen before we create.</p></article><article><div class="why-icon">◎</div><h3>Design &<br>Purpose</h3><p>Built around clear intentions.</p></article><article><div class="why-icon">▣</div><h3>Built, Test &<br>Optimize</h3><p>Real-world work, real results.</p></article><article><div class="why-icon">↗</div><h3>Launch &<br>Support</h3><p>By your side as you grow.</p></article></div></section>
