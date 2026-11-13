@@ -353,6 +353,38 @@ body::after{opacity:.19!important}
 html,body,.header.header-new,.hero.hero-reference.hero-v8,.about,.projects,.why,.worked-with-strip{background-color:var(--site-light-gray)!important}
 .header.header-new,.worked-with-strip{background:var(--site-light-gray)!important}
 body::after{opacity:.085!important;mix-blend-mode:multiply!important}
+
+/* V21 — image-led, full-width second-fold portfolio entry points */
+.portfolio-feature-banners{width:100%;background:#F0F0EE;position:relative;isolation:isolate}
+.portfolio-feature{position:relative;min-height:clamp(290px,24vw,390px);width:100%;overflow:hidden;isolation:isolate;display:flex;align-items:center;background:#F0F0EE}
+.portfolio-feature+.portfolio-feature{border-top:1px solid rgba(49,64,26,.10)}
+.portfolio-feature .feature-picture{position:absolute;inset:0 0 0 38%;z-index:0;overflow:hidden}
+.portfolio-feature .feature-picture img{height:100%;width:100%;display:block;object-fit:cover;object-position:28% center}
+.portfolio-feature.feature-creative .feature-picture img{object-position:center center}
+.portfolio-feature .feature-wash{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#F0F0EE 0%,#F0F0EE 30%,rgba(240,240,238,.98) 38%,rgba(240,240,238,.80) 45%,rgba(240,240,238,.18) 57%,transparent 70%)}
+.portfolio-feature .feature-content{position:relative;z-index:2;margin-left:clamp(28px,9.5vw,178px);padding:32px 0;display:flex;flex-direction:column;align-items:flex-start;gap:18px;max-width:520px}
+.feature-kicker{font-family:var(--font-body),'Outfit',sans-serif;letter-spacing:.13em;font-size:11px;font-weight:500;color:#656643}
+.portfolio-feature h2{font-family:var(--font-title),'Bricolage Grotesque',sans-serif;font-size:clamp(39px,4.2vw,68px);font-weight:700;line-height:1.00;letter-spacing:-.065em;color:#261D12;margin:0}
+.portfolio-feature h2 em{font-family:var(--font-italic),'Instrument Serif',serif;font-weight:400;color:#31401A}
+.portfolio-feature .feature-action{display:inline-flex;align-items:center;justify-content:center;gap:24px;border:1px solid #31401A;color:#31401A;background:rgba(240,240,238,.8);padding:13px 20px;font-family:var(--font-body),'Outfit',sans-serif;font-size:12px;font-weight:600;letter-spacing:.05em;text-decoration:none;transition:background .2s,color .2s}
+.portfolio-feature .feature-action:hover{background:#31401A;color:#F0F0EE}
+.portfolio-feature .feature-action span{font-size:18px;line-height:0.7}
+.portfolio-feature .feature-picture img{transition:transform .65s ease}
+.portfolio-feature:hover .feature-picture img{transform:scale(1.025)}
+/* Worked with contained within wider external gutters, as in the supplied reference */
+.worked-with-strip{box-sizing:border-box!important;width:calc(100% - 2 * clamp(30px,7.3vw,132px))!important;max-width:1500px!important;margin:0 auto!important;min-height:132px!important;padding:28px 0!important;grid-template-columns:185px minmax(0,1fr)!important;gap:clamp(24px,4.3vw,84px)!important;border-top:1px solid rgba(49,64,26,.22)!important;border-bottom:0!important;overflow:hidden}
+.worked-with-label{font-size:13px!important;font-weight:600!important;color:#31401A!important}
+.worked-with-viewport{min-width:0}
+@media(max-width:760px){
+ .portfolio-feature{min-height:330px}
+ .portfolio-feature .feature-picture{inset:0 0 0 25%}
+ .portfolio-feature .feature-picture img{object-position:20% center}
+ .portfolio-feature .feature-wash{background:linear-gradient(90deg,#F0F0EE 0%,rgba(240,240,238,.96) 29%,rgba(240,240,238,.75) 46%,rgba(240,240,238,.05) 85%)}
+ .portfolio-feature .feature-content{margin-left:clamp(22px,5vw,45px);max-width:72%;gap:14px}
+ .portfolio-feature h2{font-size:clamp(35px,7.5vw,52px)}
+ .worked-with-strip{width:calc(100% - 42px)!important;grid-template-columns:1fr!important;gap:14px!important;min-height:117px!important;padding:18px 0!important}
+}
+@media(prefers-reduced-motion:reduce){.portfolio-feature .feature-picture img{transition:none!important}.portfolio-feature:hover .feature-picture img{transform:none!important}}
 </style></head>
 <body>
 
@@ -367,6 +399,27 @@ body::after{opacity:.085!important;mix-blend-mode:multiply!important}
     </div>
     <a class="hero-v8-cta" href="#contact">Let's Talk <span aria-hidden="true">↗</span></a>
   </div>
+</section>
+
+<section class="portfolio-feature-banners" aria-label="Explore the portfolio">
+  <article class="portfolio-feature feature-strategy">
+    <div class="feature-picture"><img src="assets/strategy-media.webp" alt="Sports campaign featuring a football player" loading="eager" decoding="async"></div>
+    <div class="feature-wash" aria-hidden="true"></div>
+    <div class="feature-content">
+      <span class="feature-kicker">01 / STRATEGY & PERFORMANCE</span>
+      <h2>Strategy <em>&</em><br>Paid Media</h2>
+      <a class="feature-action" href="#growth">VIEW PROJECTS <span aria-hidden="true">↗</span></a>
+    </div>
+  </article>
+  <article class="portfolio-feature feature-creative">
+    <div class="feature-picture"><img src="assets/creative-design.webp" alt="Colorful branding work for Crepe da Mag" loading="lazy" decoding="async"></div>
+    <div class="feature-wash" aria-hidden="true"></div>
+    <div class="feature-content">
+      <span class="feature-kicker">02 / BRANDING & VISUAL DESIGN</span>
+      <h2>Creative <em>&</em><br>Design</h2>
+      <a class="feature-action" href="#creative">VIEW PROJECTS <span aria-hidden="true">↗</span></a>
+    </div>
+  </article>
 </section>
 <section class="worked-with-strip" aria-label="Worked with: Acqua Lokos, Ademicon, Amandia, Ateliê da Cris, B, Burnnis, Charrua, Ecobrisa, Imobiliária Lajeado, Instituto Innovare, Joma, Modullos, Redemac Zona Nova, Uni, Vesna, Construtora Zona Nova">
  <div class="worked-with-label">/WORKED WITH</div>
