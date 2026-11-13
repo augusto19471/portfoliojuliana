@@ -214,6 +214,40 @@ body::after{
  .header-contact-button{font-size:10px;padding:10px 12px;gap:5px}
  .header-contact-button span{display:none}
 }
+
+/* V14 — PALETA CINZA NEUTRA: #7E7F7A #FCFFF5 #FCFFF4 #7C7F76 #C9CCC4 */
+:root{
+ --gray-stone:#7E7F7A;--gray-ivory:#FCFFF5;--gray-paper:#FCFFF4;
+ --gray-olive:#7C7F76;--gray-mist:#C9CCC4;--gray-ink:#343631;
+ --palette-forest:var(--gray-stone);--palette-gold:var(--gray-mist);
+ --palette-ivory:var(--gray-paper);--palette-brown:var(--gray-olive);
+ --palette-deep:var(--gray-ink);--palette-olive:var(--gray-olive);
+ --palette-sage:var(--gray-mist);--palette-sand:var(--gray-mist);
+ --cream:var(--gray-paper);--wine:var(--gray-stone);
+ --chocolate:var(--gray-olive);--caramel:var(--gray-mist);
+ --text-warm:var(--gray-ink);--portfolio-blue:var(--gray-stone)
+}
+html,body,.header.header-new,.hero.hero-reference.hero-v8,.about,.projects,.why{background-color:var(--gray-paper)!important}
+body{color:var(--gray-ink)!important}
+.header.header-new{background:var(--gray-paper)!important;border-bottom:1px solid rgba(124,127,118,.27)!important}
+.header.header-new .top-nav a{color:var(--gray-ink)!important}
+.header.header-new .top-nav a:hover,.header.header-new .top-nav a:focus-visible{color:var(--gray-stone)!important}
+.header-contact-button{color:var(--gray-ink)!important;border-color:var(--gray-mist)!important}
+.header-contact-button:hover{color:var(--gray-paper)!important;background:var(--gray-stone)!important;border-color:var(--gray-stone)!important}
+.hero-v8 .hero-v8-name{color:var(--gray-stone)!important}
+.hero-fill-ghost,.hero-fill-ghost .title-creative,.hero-fill-ghost .title-media{color:#D9DCD5!important}
+.hero-fill-ink{color:var(--gray-ink)!important}
+.hero-fill-ink .title-creative{color:var(--gray-stone)!important}
+.hero-fill-ink .title-media{color:var(--gray-olive)!important}
+.hero-v8-copy p{color:var(--gray-olive)!important}
+.hero-v8 .hero-v8-cta{background:var(--gray-stone)!important;color:var(--gray-paper)!important}
+.hero-v8 .hero-v8-cta:hover{background:var(--gray-ink)!important}
+.hero-v8 .hero-v8-cta span{color:var(--gray-paper)!important}
+.cursor-follower{background:var(--gray-ink)!important}
+.about .eyebrow,.projects .eyebrow,.why .eyebrow{color:var(--gray-stone)!important}
+.contact .send{background:var(--gray-stone)!important;color:var(--gray-paper)!important}
+/* Only subtle paper grain; no dot-point grid */
+body::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch' seed='8'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='.19'/%3E%3C/svg%3E")!important;background-size:180px 180px!important;opacity:.27!important}
 </style></head>
 <body>
 
