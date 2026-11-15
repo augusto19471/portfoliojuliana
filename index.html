@@ -867,6 +867,32 @@ main > section#about{z-index:40!important}
   height:calc(clamp(69px,19vw,90px) + 25px)!important;
  }
 }
+
+/* V35 — gentle floating portrait animation, retaining alpha-based shadow */
+@keyframes juliana-avatar-float{
+ 0%,100%{transform:translate3d(0,0,0) rotate(-1deg)}
+ 50%{transform:translate3d(0,-7px,0) rotate(1deg)}
+}
+@keyframes juliana-avatar-hover{
+ from{transform:translate3d(0,-3px,0) scale(1)}
+ to{transform:translate3d(0,-8px,0) scale(1.045)}
+}
+.hero-v8 .reference-avatar img{
+ animation:juliana-avatar-float 5.5s ease-in-out infinite;
+ transform-origin:center center;
+ will-change:transform;
+}
+@media(hover:hover) and (pointer:fine){
+ .hero-v8 .reference-avatar:hover img{
+  animation:juliana-avatar-hover .55s cubic-bezier(.22,1,.36,1) both;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-v8 .reference-avatar img,.hero-v8 .reference-avatar:hover img{
+  animation:none!important;transform:none!important;will-change:auto;
+ }
+}
+
 </style></head>
 <body>
 
