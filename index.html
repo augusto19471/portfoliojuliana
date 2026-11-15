@@ -832,6 +832,26 @@ main > section#projects.case-collection{
 /* Section stacking follows the new visual ordering: cases, then who we are */
 main > section#projects{z-index:30!important}
 main > section#about{z-index:40!important}
+
+/* V34 — richer case hover, softer corners, compact section label */
+.case-collection-heading h2{font-size:clamp(22px,2.25vw,34px)!important;letter-spacing:-.045em!important}
+.case-card-media{border-radius:clamp(26px,3vw,46px)!important}
+.case-card-media:hover img,.case-card-media:focus-visible img{filter:brightness(.68)!important}
+.case-card-media:hover .case-card-shade,.case-card-media:focus-visible .case-card-shade{background:rgba(0,0,0,.22)!important}
+@media(max-width:600px){
+ .case-collection-heading h2{font-size:25px!important}
+ .case-card-media{border-radius:28px!important}
+}
+/* Text rolls vertically on hover, with an identical line replacing the first. */
+.text-roll{display:inline-grid;grid-template-rows:1.18em;vertical-align:middle;overflow:hidden;line-height:1.18;max-width:100%;text-align:inherit}
+.text-roll-track{display:flex;flex-direction:column;min-width:0;transform:translate3d(0,0,0);transition:transform .52s cubic-bezier(.22,1,.36,1)}
+.text-roll-copy{display:block;flex:0 0 1.18em;height:1.18em;line-height:1.18;white-space:pre;overflow:visible}
+@media (hover:hover) and (pointer:fine){
+ :is(a,button,h2,h3,.case-card):hover .text-roll-track,
+ :is(a,button,h2,h3,.case-card):focus-within .text-roll-track{transform:translate3d(0,-50%,0)}
+}
+@media(prefers-reduced-motion:reduce){.text-roll-track{transition:none!important;transform:none!important}}
+
 </style></head>
 <body>
 
@@ -1183,4 +1203,37 @@ requestAnimationFrame(frame);
  });
  heading.addEventListener('pointerleave',()=>apply(-1));
 })();
+
+// V34 — duplicate only direct text nodes, preserving icons, links, and heading markup.
+(()=>{
+ const selector=[
+  '.top-nav a','.header-contact-button','.hero-v8-cta',
+  '.case-collection-heading h2','.case-card-details h3',
+  '.case-card-open > span:first-child',
+  '#about h2','#creative h2','#growth h2','#contact h2',
+  '.service-row h3','.why-grid h3','.send','.pill'
+ ].join(',');
+ document.querySelectorAll(selector).forEach(el=>{
+  if(el.closest('.hero-fill-title')||el.querySelector('.text-roll'))return;
+  const textNodes=Array.from(el.childNodes).filter(n=>n.nodeType===Node.TEXT_NODE&&n.textContent.trim());
+  // Never roll a partial sentence around decorative or semantic nested markup.
+  if(textNodes.length!==1)return;
+  const original=textNodes[0],raw=original.textContent;
+  const leading=(raw.match(/^\\s*/)||[''])[0],trailing=(raw.match(/\\s*$/)||[''])[0];
+  const label=raw.trim();
+  if(!label)return;
+  const roll=document.createElement('span');roll.className='text-roll';roll.setAttribute('aria-hidden','true');
+  const track=document.createElement('span');track.className='text-roll-track';
+  for(let i=0;i<2;i++){const copy=document.createElement('span');copy.className='text-roll-copy';copy.textContent=label;track.appendChild(copy);}
+  roll.appendChild(track);
+  const frag=document.createDocumentFragment();
+  if(leading)frag.appendChild(document.createTextNode(leading));
+  frag.appendChild(roll);
+  if(trailing)frag.appendChild(document.createTextNode(trailing));
+  original.replaceWith(frag);
+  // Accessible label remains independent of duplicated visual text.
+  if(!el.hasAttribute('aria-label'))el.setAttribute('aria-label',el.textContent.trim()||label);
+ });
+})();
+
 </script></body></html>
