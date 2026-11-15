@@ -856,7 +856,17 @@ main > section#about{z-index:40!important}
 /* Keep the supplied transparent PNG and rounded cutout visible without an artificial background. */
 .hero-v8 .reference-avatar,.hero-v8 .reference-avatar img{background:transparent!important;box-shadow:none!important}
 .hero-v8 .reference-avatar{overflow:visible!important}
-.hero-v8 .reference-avatar img{object-fit:contain!important}
+.hero-v8 .reference-avatar img{object-fit:contain!important;filter:drop-shadow(0 9px 12px rgba(0,0,0,.17))!important}
+.hero-v8 .reference-avatar{
+ width:calc(clamp(85px,9.5vw,128px) + 25px)!important;
+ height:calc(clamp(85px,9.5vw,128px) + 25px)!important;
+}
+@media(max-width:520px){
+ .hero-v8 .reference-avatar{
+  width:calc(clamp(69px,19vw,90px) + 25px)!important;
+  height:calc(clamp(69px,19vw,90px) + 25px)!important;
+ }
+}
 </style></head>
 <body>
 
