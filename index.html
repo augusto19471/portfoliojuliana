@@ -843,12 +843,12 @@ main > section#about{z-index:40!important}
  .case-card-media{border-radius:28px!important}
 }
 /* Text rolls vertically on hover, with an identical line replacing the first. */
-.text-roll{display:inline-grid;grid-template-rows:1.18em;vertical-align:middle;overflow:hidden;line-height:1.18;max-width:100%;text-align:inherit}
-.text-roll-track{display:flex;flex-direction:column;min-width:0;transform:translate3d(0,0,0);transition:transform .52s cubic-bezier(.22,1,.36,1)}
+.text-roll{display:inline-block;vertical-align:middle;height:1.18em;overflow:hidden;line-height:1.18;max-width:100%;text-align:inherit}
+.text-roll-track{display:flex;flex-direction:column;height:2.36em;min-width:0;transform:translate3d(0,0,0);transition:transform .65s cubic-bezier(.76,0,.24,1)}
 .text-roll-copy{display:block;flex:0 0 1.18em;height:1.18em;line-height:1.18;white-space:pre;overflow:visible}
 @media (hover:hover) and (pointer:fine){
  :is(a,button,h2,h3,.case-card):hover .text-roll-track,
- :is(a,button,h2,h3,.case-card):focus-within .text-roll-track{transform:translate3d(0,-50%,0)}
+ :is(a,button,h2,h3,.case-card):focus-within .text-roll-track{transform:translate3d(0,-1.18em,0)}
 }
 @media(prefers-reduced-motion:reduce){.text-roll-track{transition:none!important;transform:none!important}}
 
