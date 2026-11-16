@@ -947,6 +947,19 @@ main > section#about{z-index:40!important}
 .case-detail-dialog.wine-case-open>.case-detail-image,.case-detail-dialog.wine-case-open>.case-detail-copy{display:none!important}
 .case-detail-dialog.wine-case-open>.case-detail-close{position:absolute!important;right:22px!important;top:20px!important;float:none!important;margin:0!important;z-index:20!important;box-shadow:0 2px 15px #0002}
 @media(max-width:650px){.wine-cover-graphic>span{font-size:clamp(55px,12vw,105px)}.case-detail-dialog.wine-case-open>.case-detail-close{right:12px!important;top:12px!important}}
+
+/* V38 — actual One More Wine project cover artwork */
+.wine-cover-graphic{background:#83023c!important}
+.wine-cover-card .wine-cover-graphic .wine-cover-photo{
+ position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
+ object-fit:cover!important;transform:none!important;filter:brightness(.82)!important;transition:transform .55s ease!important;
+}
+.wine-cover-card .wine-cover-graphic .wine-cover-mark{
+ position:absolute!important;inset:12% 10%!important;width:80%!important;height:76%!important;
+ object-fit:contain!important;transform:none!important;filter:drop-shadow(0 4px 9px #0003)!important;
+}
+.wine-cover-card:hover .wine-cover-graphic .wine-cover-photo{transform:scale(1.045)!important}
+.wine-cover-card:hover .wine-cover-graphic .wine-cover-mark{transform:none!important}
 </style></head>
 <body>
 
@@ -999,7 +1012,7 @@ main > section#about{z-index:40!important}
   <div class="case-collection-grid" id="all-projects">
 <article class="case-card" data-case-index="0">
   <button type="button" class="case-card-media wine-cover-card" aria-label="Ver case: One More Wine" data-open-case="0">
-    <span class="wine-cover-graphic" aria-hidden="true"><span>one more<br><strong>WINE.</strong></span></span>
+    <span class="wine-cover-graphic" aria-hidden="true"><img class="wine-cover-photo" src="assets/one-more-wine/hero-red.webp" alt=""><img class="wine-cover-mark" src="assets/one-more-wine/logo-areia.webp" alt=""></span>
     <span class="case-card-shade" aria-hidden="true"></span>
     <span class="case-card-open" aria-hidden="true"><span>VIEW CASE</span><span class="case-card-arrow">↗</span></span>
   </button>
@@ -1257,6 +1270,7 @@ requestAnimationFrame(frame);
  }));
  closer?.addEventListener('click',close);
  dialog.addEventListener('click',e=>{if(e.target===dialog)close();});
+ window.addEventListener('message',e=>{if(e.origin===location.origin&&e.data?.type==='wine-case-close'&&dialog.open)close();});
  dialog.addEventListener('close',()=>{picture.removeAttribute('src');dialog.classList.remove('wine-case-open');document.getElementById('wine-case-frame').removeAttribute('src');});
 })();
 
