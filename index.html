@@ -935,6 +935,18 @@ main > section#about{z-index:40!important}
  .case-detail-image{aspect-ratio:4/3!important;min-height:0}
 }
 
+
+/* V37: One More Wine is the first case, opening in the existing page dialog. */
+.wine-cover-card{background:#83023c!important;color:#f4d3b3!important}
+.wine-cover-graphic{position:absolute;inset:0;display:grid;place-items:center;text-align:center;background:radial-gradient(circle at 88% 15%,#c34456 0%,#83023c 53%,#43051d 100%);overflow:hidden}
+.wine-cover-graphic>span{font-family:'Bricolage Grotesque',Arial,sans-serif;font-size:clamp(40px,5.2vw,98px);font-weight:800;line-height:.8;letter-spacing:-.085em;text-transform:lowercase;transform:rotate(-4deg)}
+.wine-cover-graphic strong{font-weight:800;letter-spacing:-.065em}
+.case-detail-dialog #wine-case-frame{display:none}
+.case-detail-dialog.wine-case-open{width:100vw!important;max-width:100vw!important;height:100dvh!important;max-height:100dvh!important;overflow:hidden!important}
+.case-detail-dialog.wine-case-open #wine-case-frame{display:block;width:100%;height:100%;border:0;background:#f7f4ef}
+.case-detail-dialog.wine-case-open>.case-detail-image,.case-detail-dialog.wine-case-open>.case-detail-copy{display:none!important}
+.case-detail-dialog.wine-case-open>.case-detail-close{position:absolute!important;right:22px!important;top:20px!important;float:none!important;margin:0!important;z-index:20!important;box-shadow:0 2px 15px #0002}
+@media(max-width:650px){.wine-cover-graphic>span{font-size:clamp(55px,12vw,105px)}.case-detail-dialog.wine-case-open>.case-detail-close{right:12px!important;top:12px!important}}
 </style></head>
 <body>
 
@@ -986,15 +998,15 @@ main > section#about{z-index:40!important}
   </header>
   <div class="case-collection-grid" id="all-projects">
 <article class="case-card" data-case-index="0">
-  <button type="button" class="case-card-media" aria-label="View case: Ajuda Médica" data-open-case="0">
-    <img src="assets/cases/ajuda.webp" alt="Ajuda Médica — portfolio work" loading="lazy" decoding="async" />
+  <button type="button" class="case-card-media wine-cover-card" aria-label="Ver case: One More Wine" data-open-case="0">
+    <span class="wine-cover-graphic" aria-hidden="true"><span>one more<br><strong>WINE.</strong></span></span>
     <span class="case-card-shade" aria-hidden="true"></span>
     <span class="case-card-open" aria-hidden="true"><span>VIEW CASE</span><span class="case-card-arrow">↗</span></span>
   </button>
   <div class="case-card-details">
-    <h3>Ajuda Médica</h3>
-    <p>Campanha e presença digital para serviços de saúde.</p>
-    <div class="case-card-tags"><span>Art Direction</span><span>Social Media</span><span>Campaign</span></div>
+    <h3>One More Wine</h3>
+    <p>Brand identity para um e-commerce de vinhos mais acessível.</p>
+    <div class="case-card-tags"><span>Branding</span><span>Visual Identity</span><span>Motion</span></div>
   </div>
 </article>
 <article class="case-card" data-case-index="1">
@@ -1131,6 +1143,7 @@ main > section#about{z-index:40!important}
 </article>
   </div>
   <dialog class="case-detail-dialog" id="case-detail-dialog" aria-labelledby="case-detail-title">
+    <iframe id="wine-case-frame" title="One More Wine — case completo" loading="lazy" aria-label="One More Wine"></iframe>
     <button type="button" class="case-detail-close" aria-label="Close case" data-close-case>×</button>
     <div class="case-detail-image"><img src="" alt="" id="case-detail-image"></div>
     <div class="case-detail-copy">
@@ -1142,7 +1155,6 @@ main > section#about{z-index:40!important}
     </div>
   </dialog>
 </section>
-<div class="wine-feature" style="padding:65px 5.2%;background:#83023c;color:#f4d3b3"><div style="font-size:11px;letter-spacing:.13em;margin-bottom:18px">FEATURED BRAND IDENTITY / 2026</div><a href="one-more-wine.html" style="display:block;text-decoration:none;color:inherit"><div style="font-size:clamp(55px,10vw,165px);line-height:.85;font-weight:800;letter-spacing:-.075em">One More Wine <span aria-hidden="true">↗</span></div><p style="margin-top:25px;font-size:16px">Brand identity · Typography · Color system · Motion</p></a></div>
 <section id="about" class="about section-pad"><div class="eyebrow">[WHO WE ARE]</div><div class="about-layout"><div class="about-image"><img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=850&q=85" alt="Fashion portrait"></div><div class="about-copy"><div class="eyebrow">[01 / Our Commitment]</div><h2>Consistent<br>quality in every<br>project, blending<br>innovative Design</h2><p>We create digital experiences where strategy, thoughtful design and technology work closely. Every interaction is considered, every detail refined, and every outcome meaningful.</p><div class="stats"><div><strong data-count="190">0</strong><span>Global<br>Partners</span></div><div><strong data-count="92">0</strong><span>Client<br>Retention</span></div><div><strong data-count="32" data-suffix="%">0</strong><span>Industries<br>We Serve</span></div></div></div></div><div class="partners"><span>✳ WAVE</span><span>◌ studio</span><span>✧ NORTH</span><span>LOCO</span><span>◈ FOUND</span><span>◎ CAST</span></div></section>
 <section id="creative" class="why section-pad"><div class="eyebrow">[03 / Why Choose Brog]</div><div class="why-heading"><h2>Why Brog?</h2><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&q=80" alt="Creative studio"></div><div class="why-grid"><article><div class="why-icon">✳</div><h3>Strategy &<br>Research</h3><p>We listen before we create.</p></article><article><div class="why-icon">◎</div><h3>Design &<br>Purpose</h3><p>Built around clear intentions.</p></article><article><div class="why-icon">▣</div><h3>Built, Test &<br>Optimize</h3><p>Real-world work, real results.</p></article><article><div class="why-icon">↗</div><h3>Launch &<br>Support</h3><p>By your side as you grow.</p></article></div></section>
 <section id="growth" class="services section-pad"><div class="eyebrow">[04 / Our Services]</div><h2>Services</h2><div class="service-list"><div class="service-row"><span>01</span><div><h3>Art Direction</h3><p>Creative direction that creates a distinct point of view and an unforgettable brand experience.</p></div><div class="tags"><span>Visual identity</span><span>Campaigns</span><span>Concepts</span></div><div class="service-preview"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?w=400&q=80" alt="Landscape"></div></div><div class="service-row"><span>02</span><div><h3>Brand Identity</h3><p>Design systems that build stronger identities and recognizable, lasting brands.</p></div><div class="tags"><span>Branding</span><span>Strategy</span><span>Creative systems</span><span>Typography</span></div><div class="service-preview"><img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=400&q=80" alt="Interior"></div></div><div class="service-row"><span>03</span><div><h3>Motion Design</h3><p>Motion, interaction and dynamic details that move brands beyond the static screen.</p></div><div class="tags"><span>Animations</span><span>Visual effects</span><span>Web motion</span></div><div class="service-preview"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&q=80" alt="Fashion"></div></div><div class="service-row"><span>04</span><div><h3>Frame Shots</h3><p>Photography, visual storytelling and image-making for unforgettable campaigns.</p></div><div class="tags"><span>Photography</span><span>Production</span><span>Art direction</span></div><div class="service-preview"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80" alt="Portrait"></div></div></div></section>
@@ -1225,7 +1237,15 @@ requestAnimationFrame(frame);
  const closer=dialog.querySelector('[data-close-case]');
  function close(){if(dialog.open)dialog.close();}
  document.querySelectorAll('[data-open-case]').forEach(button=>button.addEventListener('click',()=>{
-  const item=items[Number(button.dataset.openCase)];
+  const idx=Number(button.dataset.openCase);
+  if(idx===0){
+   dialog.classList.add('wine-case-open');
+   document.getElementById('wine-case-frame').src='one-more-wine.html?embed=1';
+   if(typeof dialog.showModal==='function')dialog.showModal();
+   return;
+  }
+  dialog.classList.remove('wine-case-open');
+  const item=items[idx];
   if(!item)return;
   picture.src='assets/cases/'+item.slug+'.webp';
   picture.alt=item.title+' — enlarged project presentation';
@@ -1237,7 +1257,7 @@ requestAnimationFrame(frame);
  }));
  closer?.addEventListener('click',close);
  dialog.addEventListener('click',e=>{if(e.target===dialog)close();});
- dialog.addEventListener('close',()=>{picture.removeAttribute('src');});
+ dialog.addEventListener('close',()=>{picture.removeAttribute('src');dialog.classList.remove('wine-case-open');document.getElementById('wine-case-frame').removeAttribute('src');});
 })();
 
 // V33 — independent gentle motion for letters in the home title.
