@@ -960,6 +960,20 @@ main > section#about{z-index:40!important}
 }
 .wine-cover-card:hover .wine-cover-graphic .wine-cover-photo{transform:scale(1.045)!important}
 .wine-cover-card:hover .wine-cover-graphic .wine-cover-mark{transform:none!important}
+
+/* V38 — editorial Dr Lourenço Senandes cover, second featured case */
+.senandes-cover-card{background:#102c32!important;position:relative;isolation:isolate}
+.senandes-cover-scenes{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden}
+.senandes-cover-scenes>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;opacity:0;animation:senandes-card-switch 9s linear infinite}
+.senandes-cover-scenes>img:nth-child(1){animation-delay:0s}
+.senandes-cover-scenes>img:nth-child(2){animation-delay:-6s}
+.senandes-cover-scenes>img:nth-child(3){animation-delay:-3s}
+@keyframes senandes-card-switch{0%,29.5%{opacity:1}33.33%,96.5%{opacity:0}100%{opacity:1}}
+.senandes-cover-shade{position:absolute;inset:0;background:linear-gradient(180deg,#0005,#0008);z-index:1}
+.senandes-cover-headline{font-family:'Instrument Serif',Georgia,serif;position:relative;z-index:2;font-size:clamp(36px,4.1vw,75px);font-weight:400;line-height:.98;letter-spacing:-.035em;text-align:center;color:#fff;max-width:90%;text-shadow:0 2px 9px #0005}
+.senandes-cover-headline em{font-weight:400}
+@media(max-width:780px){.senandes-cover-headline{font-size:clamp(42px,8vw,68px)}}
+@media(prefers-reduced-motion:reduce){.senandes-cover-scenes>img{animation:none!important;opacity:0}.senandes-cover-scenes>img:first-child{opacity:1}}
 </style></head>
 <body>
 
@@ -1021,6 +1035,24 @@ main > section#about{z-index:40!important}
     <p>Brand identity para um e-commerce de vinhos mais acessível.</p>
     <div class="case-card-tags"><span>Branding</span><span>Visual Identity</span><span>Motion</span></div>
   </div>
+</article>
+<article class="case-card" data-case-index="senandes">
+ <button type="button" class="case-card-media senandes-cover-card" aria-label="View case: Dr Lourenço Senandes" data-open-case="senandes">
+  <span class="senandes-cover-scenes" aria-hidden="true">
+   <img src="assets/senandes/hero-01.webp" alt="" loading="lazy" decoding="async">
+   <img src="assets/senandes/hero-02.webp" alt="" loading="lazy" decoding="async">
+   <img src="assets/senandes/hero-03.webp" alt="" loading="lazy" decoding="async">
+   <span class="senandes-cover-shade"></span>
+   <span class="senandes-cover-headline">Social Media<br><em>Repositioning</em></span>
+  </span>
+  <span class="case-card-shade" aria-hidden="true"></span>
+  <span class="case-card-open" aria-hidden="true"><span>VIEW CASE</span><span class="case-card-arrow">↗</span></span>
+ </button>
+ <div class="case-card-details">
+  <h3>Dr Lourenço Senandes</h3>
+  <p>Social Media Repositioning · Design editorial para comunicação médica.</p>
+  <div class="case-card-tags"><span>Art Direction</span><span>Social Media</span><span>Repositioning</span></div>
+ </div>
 </article>
 <article class="case-card" data-case-index="1">
   <button type="button" class="case-card-media" aria-label="View case: Chocoá Chocolates" data-open-case="1">
@@ -1250,6 +1282,14 @@ requestAnimationFrame(frame);
  const closer=dialog.querySelector('[data-close-case]');
  function close(){if(dialog.open)dialog.close();}
  document.querySelectorAll('[data-open-case]').forEach(button=>button.addEventListener('click',()=>{
+  if(button.dataset.openCase==='senandes'){
+   dialog.classList.add('wine-case-open');
+   const frame=document.getElementById('wine-case-frame');
+   frame.title='Dr Lourenço Senandes — Social Media Repositioning';
+   frame.src='lourenco-senandes.html?embed=1';
+   if(typeof dialog.showModal==='function')dialog.showModal();
+   return;
+  }
   const idx=Number(button.dataset.openCase);
   if(idx===0){
    dialog.classList.add('wine-case-open');
